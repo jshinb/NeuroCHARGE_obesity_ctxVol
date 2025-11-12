@@ -15,13 +15,16 @@ cat(starting.message,file=logfile)
 
 # starting ----
 roi.34 = fread("freesurfer_34rois.txt",header=F) %>% pull(V1)
+
 ##* identify columns with all missing or with SD=0 (no variation)
 missing <- colSums(is.na(df))
 missingCol <- names(df)[missing == nrow(df)]
 col.SD = apply(df %>% select(where(is.numeric)),2,sd,na.rm=T)
-mono = apply( df, 2, function(x){ all(length(unique(na.omit(x))) == 1) } )
+mono = apply( df %>% select(where(is.character)), 2, function(x){ all(length(unique(na.omit(x))) == 1) } )
 monoVar = attr(mono,"names")[mono]
-rm.var = c(col.SD[col.SD==0],monoVar,missingCol)
+rm.var = c(names(col.SD)[col.SD==0],monoVar,missingCol)
+cat('\nRemoved variables due to 100% missing or no variations: ', paste0(rm.var,collapse = ","),".","\n",sep='',
+    file=logfile,append=T)
 
 ##* remove the identified columns from the analyses
 cov_ctxV = setdiff(c('age_mri','age_diff','sex','ICV',cov_genoPC,cov_cohort_specific),rm.var)
