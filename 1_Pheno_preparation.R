@@ -13,7 +13,7 @@ source('install_libs.R')
 #*****************************************************************************#
 # source functions
 #*****************************************************************************#
-if(file.exists(paste0(opt$dir, "/Rfunctions.R")) == F){
+if(!file.exists(file.path(opt$dir, "Rfunctions.R"))){
   stop("Please make sure you save the file called 'Rfunctions.R' in the same directory as 'pheno_preparation.R' as well as your neuroimaging and covariate input files. Currently it is not in ", opt$dir,".")
 }
 source(paste0(opt$dir, "/Rfunctions.R"))
@@ -22,9 +22,7 @@ source(paste0(opt$dir, "/Rfunctions.R"))
 # Record output ----
 #*****************************************************************************#
 # create directory to hold results
-dir.create(path = paste0(opt$dir, "/outputs_to_send"), recursive = T, showWarnings = F)
-
-# sink(paste0(opt$dir, "/outputs_to_send/",opt$cohort_name,"_phenotype_prep.log"))
+dir.create(path = file.path(opt$dir, paste0("outputs_to_send_",opt$cohort_name)), recursive = T, showWarnings = F)
 
 print("Starting analysis.")
 print(Sys.time())
@@ -34,7 +32,7 @@ time1=Sys.time()
 # Sanity checks for input files ----
 #*****************************************************************************#
 #* Check if files exist ----
-if(!file.exists(file.path(opt$dir, opt$input_neuro))){
+if(!file.exists(file.path(opt$dir,opt$input_neuro))){
   stop(paste0("The file you indicated with --input_neuro does not exist: ", opt$dir, opt$input_neuro))
 }
 if(!file.exists(file.path(opt$dir,opt$input_non.neuro))){
