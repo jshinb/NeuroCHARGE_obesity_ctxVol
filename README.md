@@ -5,22 +5,22 @@ Scripts to run adiposity-ctx structure associations
 ## File 1: `neuro` file
 
 **Notes:** - The column names **and their order** must exactly match those in
-`neuro_columns.txt`, which contains names for the FreeSurfer-parcellated regions, left and right hemispheres, and ICV.\
-- Include the following 212 variables:\
-1.  Participant ID (n=1)\
-2.  Cortical volume for the 68 FreeSurfer-parcellated regions in the left and right hemispheres (n=68)\
-3.  Cortical thickness for the 68 FreeSurfer-parcellated regions in the left and right hemispheres (n=68)\
-3.  Cortical surface area for the 68 FreeSurfer-parcellated regions in the left and right hemispheres (n=68)\
-4.  Total cortical volume for the left and right hemispheres (n=2)\
-5.  Average cortical thickness in the left and right hemispheres (n=2)\
-6.  Total cortical surface area for the left and right hemispheres (n=2)\
-7.  Intracranial volume (ICV) (n=1)
+`neuro_columns.txt`, which contains names for the FreeSurfer-parcellated regions, left and right hemispheres, and ICV.
+- Include the following 212 variables:
+1.  Participant ID (n=1)
+2.  Cortical volume for the 68 FreeSurfer-parcellated regions in the left and right hemispheres (n=68)
+3.  Cortical thickness for the 68 FreeSurfer-parcellated regions in the left and right hemispheres (n=68)
+4.  Cortical surface area for the 68 FreeSurfer-parcellated regions in the left and right hemispheres (n=68)
+5.  Total cortical volume for the left and right hemispheres (n=2)
+6.  Average cortical thickness in the left and right hemispheres (n=2)
+7.  Total cortical surface area for the left and right hemispheres (n=2)
+8.  Intracranial volume (ICV) (n=1)
 
 ------------------------------------------------------------------------
 
 ## File 2: `non.neuro` file
 
-This file must include **four required (A–D)** and **one optional (E)** variables.\
+This file must include all non-brain types of variables (i.e., adiposity, genotypes, genetic PCs, any cohort-specific variables).
 (See `non_neuro_example.xlsx` for reference.)
 
 | Variable | Description (unit or coding)      | Note                                            |
