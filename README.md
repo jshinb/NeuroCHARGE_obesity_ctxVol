@@ -23,28 +23,24 @@ Scripts to run adiposity-ctx structure associations
 This file must include all of the following non-brain types of variables (i.e., adiposity, genotypes, genetic PCs, and any cohort-specific variables).
 (See `non_neuro_example.xlsx` for reference). **Please be sure to use the same unit/coding as instructed.**
 
-| Variable | Description (unit or coding)      | Note                                            |
+| Variable | Description (unit or coding)      | Note                                               |
 |-------------|---------------------------------------|---------------------------------------------|
-| `ID`     | Participant ID                    |                                                 |
-| `FID`    | Family ID (same as `ID` if unrelated)|                                              |
-| `age_mri`| Age at MRI scan (years)         |                                                 |
-| `age_adiposity`| Age at adiposity measurement (years)|If it was taken at the time of brain MRI, put `age_mri`.|
-| `sex`    | Sex (`M/F`)                       |                                                 |
-| `icv`    | Intracranial volume (mm³).      |                                                 |
-| `current_smoking`| Current smoking staaus (`Yes/No`)|                                          |
-| `hypertension`| Has hypertension? (`Yes/No`) |                                                 |
-| `T2D`    | Has type 2 diabetes? (`Yes/No`)   |                                                 |
-| `BMI`    | Body mass index (kg/m²)           |                                                 |
-| `waist`  | Waist circumference (cm)          |                     |
-| `height` | Height (cm)                       |                     |
-| `WHR`    | Waist Hip Ratio: Waist circumference (cm) / Hip circumference (cm)|                     |
-| `Ancestry` | AFR (African), AMR (American), EAS (East Asian), EUR (European), SAS (African)| Contact us if you have non-European ancestries and need to genetically infer ancestries: We will provide scripts. |
-| `Ethnicity` | e.g., White, African American, Chinese, ... |                |
-| `APOE` | APOE genotypes: coded as `e2e2`, `e2e3`, `e2e4`, `e3e3`, `e3e4`, or `e4e4` |                           |
-| `genoPC1` – `genoPC4` or more | The first >=4 leading principal component scores.|At least 4 top PCs will be included. |
-| `cohort_specific_1` | e.g., genotype array, MRI site |                     |
-| …                   | …                              |                     |
-| `cohort_specific_m` | …                              |                     |
+| `ID`     | Participant ID                    |                                                    |
+| `FID`    | Family ID (same as `ID` if unrelated)|                                                 |
+| `sex`    | Sex (`M/F`)                       |                                                    |
+| `BMI`    | Body mass index (kg/m²)           |                                                    |
+| `waist`  | Waist circumference (cm)          |                                                    |
+| `height` | Height (cm)                       |                                                    |
+| `WHR`    | Waist Hip Ratio: Waist circumference (cm) / Hip circumference (cm)|                    |
+| `age_adiposity`| Age at adiposity measurement (years)|                                            |
+| `age_mri`| Age at MRI scan (years) |If it was taken at the time of adiposity measurement, put `age_adiposity`.|
+| `genoPC1` – `genoPC4` or more | The first >=4 leading principal component scores.|At least 4 top PCs will be included.|
+| `current_smoking`| Current smoking staaus (`Yes/No`)|                                             |
+| `hypertension`| Has hypertension? (`Yes/No`) |                                                    |
+| `T2D`    | Has type 2 diabetes? (`Yes/No`)   |                                                    |
+| `APOE` | APOE genotypes: coded as `e2e2`, `e2e3`, `e2e4`, `e3e3`, `e3e4`, or `e4e4` |             |
+| `ancestry` | AFR (African), AMR (American), EAS (East Asian), EUR (European), SAS (African)| Contact us if you have non-European ancestries and need to genetically infer ancestries: We will provide scripts. |
+| `ethnicity` | e.g., White, African American, Chinese, ... |                                       |
 
 ------------------------------------------------------------------------
 
