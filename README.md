@@ -1,5 +1,9 @@
 # NeuroCHARGE_obesity_ctxVol
 Scripts to run adiposity-ctx structure associations
+# Script instructions
+1. Format data (see below)
+2. Edit 'cohort_specific_inputs.R'
+3. Edit and run 'run_protocols.R'
 # File Formatting Instructions
 
 ## File 1: `neuro` file
@@ -49,3 +53,5 @@ This file must include all of the following non-brain types of variables (i.e., 
 **End of File Instructions**
 
 # Script Instructions
+# Output Instructions
+When you successfully 
