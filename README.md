@@ -50,7 +50,12 @@ This file must include all of the following non-brain types of variables (i.e., 
 | `ethnicity` | e.g., White, African American, Chinese, ... |                                       |
 
 ------------------------------------------------------------------------
-### Example data frame for the non-neuro file:
+## Example data frame for the `non-neuro` file:
 ![data example](non.neuro_example.png)
 
 **End of File formatting instructions**
+
+# Outputs
+1. After running all the scripts, several subfolders will be automatically created in the output_to_send_XXX directory: 
+![sub_folders](subfolder_example.png)
+2. Each subfolder should contain the output files listed in ![output lists](ouptut_file_descriptions.xlsx). Please note: if the sample size is too small for **stratified analyses** or **sex-specific adjustments** of brain and/or adiposity variables (for covariates), only **log files** may be generated instead of full output files. 
