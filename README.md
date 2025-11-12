@@ -7,7 +7,7 @@ Scripts to run adiposity-ctx structure associations
 **Notes:** - The column names **and their order** must exactly match those in
 `neuro_columns.txt`, which contains names for the FreeSurfer-parcellated regions, left and right hemispheres, and ICV.
 - Include the following 212 variables:
-1.  Participant ID (n=1)
+1.  'ID' Participant ID (n=1)
 2.  Cortical volume for the 68 FreeSurfer-parcellated regions in the left and right hemispheres (n=68)
 3.  Cortical thickness for the 68 FreeSurfer-parcellated regions in the left and right hemispheres (n=68)
 4.  Cortical surface area for the 68 FreeSurfer-parcellated regions in the left and right hemispheres (n=68)
