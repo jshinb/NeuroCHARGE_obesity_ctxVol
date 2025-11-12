@@ -16,6 +16,7 @@ pacman::p_load(#check if a package is installed, if not, it attempts to install 
   ggpubr,cowplot,patchwork, GGally,corrplot,
   hrbrthemes, #might not be installed automatically: is this necessary?
   mgcv,       #for adjusting continuous covariates using non-parametric smooth models
+  lmerTest,   #for fitting regression to family-data
   EnvStats)   #for outliers [grubs]
 
 ## print out 
