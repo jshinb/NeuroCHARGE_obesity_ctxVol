@@ -6,10 +6,10 @@
 #
 #*****************************************************************************#
 op <- options(warn=1)
-logfile=file.path(outdir,"3b_roiAssociation_statistics_fullModel.log"); 
+logfile=file.path(outdir,"3b_roiAssociation_statistics_fullModel_FAM.log"); 
 if(file.exists(logfile)) file.remove(logfile)
 
-starting.message=paste0("\n3b. Start obtaining association estimates for adiposity vs. roi-ctx for the full model.\n")
+starting.message=paste0("\n3b. Start obtaining association estimates for adiposity vs. roi-ctx for the full model_FAM.\n")
 cat(starting.message)
 cat(starting.message,file=logfile,append=F)
 
