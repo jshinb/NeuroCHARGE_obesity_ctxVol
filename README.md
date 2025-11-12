@@ -26,7 +26,7 @@ Scripts to run adiposity-ctx structure associations
 
 ## File 2: `non.neuro` file
 
-This file must include all of the following non-brain types of variables (i.e., adiposity, genotypes, genetic PCs, and any cohort-specific variables). **Please be sure to use the same unit/coding as instructed.**
+This file must include all of the following non-brain types of variables (i.e., adiposity, genotypes, genetic PCs, and any cohort-specific variables). **Please be sure to use the same unit/coding as instructed.** The required column names are listed in [non.neuro_columns.txt](non.neuro_columns.txt).
 
 | Variable | Description (unit or coding)      | Note                                               |
 |-------------|---------------------------------------|---------------------------------------------|
