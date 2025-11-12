@@ -524,6 +524,9 @@ str_analysis = function(data,str.var,str.var.name,cov_cohort_specific,cov_additi
       }
       if(run_base) {
         if(is.family.data){
+          msg = paste0('\n run family-based association tests under base model.\n')
+          message(msg)
+          cat(msg,file=logfile,append = T)
           source("3a_roiAssociation_statistics_baseModel_FAM.R",local = T)
         }else{
           source("3a_roiAssociation_statistics_baseModel.R",local = T)
@@ -541,6 +544,10 @@ str_analysis = function(data,str.var,str.var.name,cov_cohort_specific,cov_additi
       run_full = !small.sample_full$lessthan_5
       if(run_full){
         if(is.family.data){
+          msg = paste0('\n run family-based association tests under full model.\n')
+          message(msg)
+          cat(msg,file=logfile,append = T)
+          
           source("3b_roiAssociation_statistics_fullModel_FAM.R",local = T)
         }else{
           source("3b_roiAssociation_statistics_fullModel.R",local = T)
