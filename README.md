@@ -2,7 +2,7 @@
 Scripts to run adiposity-ctx structure associations
 # Script instructions
 1. Download the script and related files.
-2. Format data (see below)
+2. Format the data files (see below)
 3. Move the formatted data files to the same directory where the scripts are.
 4. Edit 'cohort_specific_inputs.R'
 5. Edit and run 'run_protocols.R'
