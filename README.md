@@ -7,7 +7,7 @@ Scripts to run adiposity-ctx structure associations(Please see [PROTOCOL](NeuroC
 3. **Place** the formatted data files in the same directory as the analysis scripts.
 4. **Modify** the file **`cohort_specific_inputs.R`** to include the relevant cohort-specific information.
 5. **Modify and execute** the script **`run_protocols.R`** to generate the analysis outputs.
-6. **Upon completion of Step 5**, compress the folder **`outputs_to_send_COHORT`** and **submit it via email** to **Jean Shin** (**[jjshin.research@gmail.com](mailto:jjshin.research@gmail.com)**).
+6. **Upon completion of Step 5**, review and compress the folder **`outputs_to_send_COHORT`** and **submit it via email** to **Jean Shin** (**[jjshin.research@gmail.com](mailto:jjshin.research@gmail.com)**).
    
 # File formatting instructions
 
@@ -57,6 +57,6 @@ This file must include all of the following non-brain types of variables (i.e., 
 **End of File formatting instructions**
 
 # Outputs
-1. After running all the scripts, several subfolders will be automatically created in the `output_to_send_XXX` directory: 
+1. After running all the scripts, several subfolders will be automatically created in the **`outputs_to_send_COHORT`** directory: 
 ![sub_folders](subfolder_example.png)
 2. Each subfolder should contain the output files listed in [output lists](ouptut_file_descriptions.xlsx). Please note: if the sample size is too small for **stratified analyses** or **sex-specific adjustments** of brain and/or adiposity variables (for covariates), only **log files** may be generated instead of full output files. 
