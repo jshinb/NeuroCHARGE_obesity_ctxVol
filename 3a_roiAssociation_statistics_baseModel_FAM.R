@@ -219,6 +219,11 @@ for(adiposity in c("BMI","WC","WHR")){
       analdati[['y']] <- inormal(analdati[[yname]])
       analdati[['x']] <- inormal(analdati[[xname]])
       
+      ## scale continuous covariates for better stability
+      cont.covs = sapply(subset(df,select=setdiff(cov_required,c('age_mri','age_adiposity',"ICV",'sex'))), is.numeric)
+      cont.covs = names(cont.covs)[cont.covs]
+      analdati <- analdati %>% mutate(across(cont.covs, scale))
+
       ## define regression model
       mod0 = paste0(
         c('x',select_vars,
