@@ -43,6 +43,7 @@ This file must include all of the following non-brain types of variables (i.e., 
 | `ethnicity` | e.g., White, African American, Chinese, ... |                                       |
 
 ------------------------------------------------------------------------
+![data example](non.neuro_example.png)
 
 **End of File Instructions**
 
