@@ -4,6 +4,8 @@ Scripts to run adiposity-ctx structure associations
 1. Format data (see below)
 2. Edit 'cohort_specific_inputs.R'
 3. Edit and run 'run_protocols.R'
+4. When you complete #3, please compress the `outputs_to_send_COHORT` directory and email it to Jean Shin (jjshin.research@gmail.com).
+   
 # File Formatting Instructions
 
 ## File 1: `neuro` file
