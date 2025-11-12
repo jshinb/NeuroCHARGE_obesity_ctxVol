@@ -53,7 +53,3 @@ This file must include all of the following non-brain types of variables (i.e., 
 ![data example](non.neuro_example.png)
 
 **End of File Instructions**
-
-# Script Instructions
-# Output Instructions
-When you successfully 
