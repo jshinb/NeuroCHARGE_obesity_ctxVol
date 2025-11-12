@@ -6,7 +6,7 @@ Scripts to run adiposity-ctx structure associations ([PROTOCOL](NeuroCHARGE_Prot
 2. **Prepare and format** the data files according to the specifications described below.
 3. **Place** the formatted data files in the same directory as the analysis scripts.
 4. **Modify** the file **`cohort_specific_inputs.R`** to include the relevant cohort-specific information.
-5. **Modify and execute** the script **`run_protocols.R`** to generate the analysis outputs.
+5. **Modify (line 4) and execute** the script **`run_protocols.R`** to generate the analysis outputs.
 6. **Upon completion of Step 5**, review and compress the folder **`outputs_to_send_COHORT`** and **submit it via email** to **Jean Shin** (**[jjshin.research@gmail.com](mailto:jjshin.research@gmail.com)**).
    
 # File formatting instructions
