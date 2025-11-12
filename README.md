@@ -1,6 +1,6 @@
 # NeuroCHARGE_obesity_ctxVol
 Scripts to run adiposity-ctx structure associations
-# File Instructions
+# File Formatting Instructions
 
 ## File 1: `neuro` file
 
@@ -49,3 +49,5 @@ This file must include all non-brain types of variables (i.e., adiposity, genoty
 ------------------------------------------------------------------------
 
 **End of File Instructions**
+
+# Script Instructions
