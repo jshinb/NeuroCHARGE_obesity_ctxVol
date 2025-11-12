@@ -478,6 +478,7 @@ get_adj_WHR = function(d,covariate_names,remove.ID=F,logfile){
   ret
 }
 
+#* check sample sizes for discrete covariste (if 1, cannot run regression adjusting for that var)----
 check.sample.size <- function(anal_outdir,disc_cov_names){
   load(file.path(anal_outdir,"descriptive_discrete_tables.RData"))
   sm.F = desc_Female_discrete
@@ -503,8 +504,8 @@ check.sample.size <- function(anal_outdir,disc_cov_names){
   ret = list(df_minFreq=df_minFreq,lessthan_5 = lessthan_5)
   ret
 }
-
-str_analysis = function(data,str.var,str.var.name,cov_cohort_specific,cov_additional){
+#* stratified or pooled analysis functions ----
+str_analysis = function(data,str.var,str.var.name,cov_cohort_specific,cov_additional,is.family.data){
   groups = unique(na.omit(data[[str.var.name]]))
   if(length(groups)>1){
     # 2. descriptive stats
@@ -522,7 +523,11 @@ str_analysis = function(data,str.var,str.var.name,cov_cohort_specific,cov_additi
         run_base = TRUE# discrete cohort-specific covs don't exist --> proceed to fitting
       }
       if(run_base) {
-        source("3a_roiAssociation_statistics_baseModel.R",local = T)
+        if(is.family.data){
+          source("3a_roiAssociation_statistics_baseModel_FAM.R",local = T)
+        }else{
+          source("3a_roiAssociation_statistics_baseModel.R",local = T)
+        }
       }else{
         msg = paste0('\nBefore 3a: ',str.var,"_",group," (n=",nrow(df),
                      '): Because sex-specific sample sizes for some discreate covariates are less than 5, ',
@@ -535,7 +540,11 @@ str_analysis = function(data,str.var,str.var.name,cov_cohort_specific,cov_additi
       small.sample_full <- check.sample.size(outdir,c(cohort_specific_covs,cov_additional))
       run_full = !small.sample_full$lessthan_5
       if(run_full){
-        source("3b_roiAssociation_statistics_fullModel.R",local = T)
+        if(is.family.data){
+          source("3b_roiAssociation_statistics_fullModel_FAM.R",local = T)
+        }else{
+          source("3b_roiAssociation_statistics_fullModel.R",local = T)
+        }
         source("3c_plot_roiAssociation_results_base_vs_fullModels.R",local=T)
       }else{
         msg = paste0('\nBefore 3b: ',str.var,"_",group," (n=",nrow(df),
@@ -560,10 +569,11 @@ str_analysis = function(data,str.var,str.var.name,cov_cohort_specific,cov_additi
 }
 
 pooled_analysis = function(
-    data,cov_cohort_specific,
+    data,
+    cov_cohort_specific,
     cov_additional,
-    analysis.type# c("primary","primary_all",'adjEthnicity')
-    )
+    analysis.type,# c("primary","primary_all",'adjEthnicity')
+    is.family.data)
   {
   group = "pooled"
   # 2. descriptive stats
@@ -586,7 +596,11 @@ pooled_analysis = function(
       run_base = TRUE# discrete cohort-specific covs don't exist --> proceed to fitting
     }
     if(run_base) {
-      source("3a_roiAssociation_statistics_baseModel.R",local = T)
+      if(is.family.data){
+        source("3a_roiAssociation_statistics_baseModel_FAM.R",local = T)
+      }else{
+        source("3a_roiAssociation_statistics_baseModel.R",local = T)
+      }
     }else{
       msg = paste0('\nBefore 3a: ',group," (n=",nrow(df),
                    '): Because sex-specific sample sizes for some discreate covariates are less than 5, ',
@@ -599,7 +613,11 @@ pooled_analysis = function(
     small.sample_full <- check.sample.size(outdir,c(cohort_specific_covs,cov_additional))
     run_full = !small.sample_full$lessthan_5
     if(run_full){
-      source("3b_roiAssociation_statistics_fullModel.R",local = T)
+      if(is.family.data){
+        source("3b_roiAssociation_statistics_fullModel_FAM.R",local = T)
+      }else{
+        source("3b_roiAssociation_statistics_fullModel.R",local = T)
+      }
       source("3c_plot_roiAssociation_results_base_vs_fullModels.R",local=T)
     }else{
       msg = paste0('\nBefore 3b: ',group," (n=",nrow(df),
