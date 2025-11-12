@@ -11,6 +11,7 @@ opt = data.frame(
   input_neuro = input_neuro,# required: name of the file containing the brain variables:
   input_non.neuro = input_non.neuro,# required: name of the file containing the other variables
   cohort_name = cohort_short_name,
+  is.family.data = family_data,
   NAsymbol = missing_value_code
 )# required:
 
