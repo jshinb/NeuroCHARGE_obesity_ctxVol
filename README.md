@@ -6,7 +6,7 @@ Scripts to run adiposity-ctx structure associations
 3. Edit and run 'run_protocols.R'
 4. When you complete #3, please compress the `outputs_to_send_COHORT` directory and email it to Jean Shin (jjshin.research@gmail.com).
    
-# File Formatting Instructions
+# File formatting instructions
 
 ## File 1: `neuro` file
 
@@ -51,4 +51,4 @@ This file must include all of the following non-brain types of variables (i.e., 
 ### Example data frame for the non-neuro file:
 ![data example](non.neuro_example.png)
 
-**End of File Instructions**
+**End of File formatting instructions**
