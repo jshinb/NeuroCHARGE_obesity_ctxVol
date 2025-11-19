@@ -153,9 +153,11 @@ save(desc_All_discrete,desc_Female_discrete,desc_Male_discrete,
 corm = cor(subset(df,select=setdiff(names(df),c("ID",cat_vars))),use="p")
 cormF = cor(subset(df,sex=="F",select=setdiff(names(df),c("ID",cat_vars))),use="p")
 cormM = cor(subset(df,sex=="M",select=setdiff(names(df),c("ID",cat_vars))),use="p")
+cor_list = list(corm=corm, cormF=cormF, cormM=cormM)
+save(cor_list,file=file.path(outdir,'correlation_matrices_continuous_variables.Rdata'))
 
 # scatter plots with correlation ----------------------------------------------
-dA=subset(df,select=c( setdiff(names(non.neuro),c('ID',"FID")), "ICV"))
+dA=subset(df,select=c( setdiff(names(non.neuro),c('ID',"FID",missingCol)), "ICV"))
 png(file.path(outdir,"correlation_pairwise_scatter.png"),
     width=22,height=22,units="in",res=300)
 suppressWarnings({
