@@ -30,9 +30,6 @@ cat('\nRemoved variables due to 100% missing or no variations: ', paste0(rm.var,
 cov_ctxV = setdiff(c('age_mri','age_diff','sex','ICV',cov_genoPC,cov_cohort_specific,cov_additional),rm.var)
 cov_ctxSA = setdiff(c('age_mri','age_diff','sex','ICV',cov_genoPC,cov_cohort_specific,cov_additional),rm.var)
 cov_ctxTH = setdiff(c('age_mri','age_diff','sex',cov_genoPC,cov_cohort_specific,cov_additional),rm.var)
-cov_BMI = setdiff(c('age_adiposity','age_diff','sex',cov_genoPC,cov_cohort_specific,cov_additional),rm.var)
-cov_WC = setdiff(c('age_adiposity','age_diff','sex','height',cov_genoPC,cov_cohort_specific,cov_additional),rm.var)
-cov_WHR = setdiff(c('age_adiposity','age_diff','sex',cov_genoPC,cov_cohort_specific,cov_additional),rm.var)
 
 # adjust Ctx outcomes ----
 adj_ctxV <- adj_ctxSA <- adj_ctxTH <-df %>% select(ID)
@@ -53,18 +50,32 @@ for (roii in c(roi.34,'global')){
 }
 
 # adjust adiposity measures ----
-adj_BMI = get_adj_BMI(d=df,covariate_names = cov_BMI,remove.ID = F,logfile=logfile)
-adj_WC = get_adj_WC(d=df,covariate_names = cov_WC,remove.ID = F,logfile=logfile)
-adj_WHR = get_adj_WHR(d=df,covariate_names = cov_WHR,remove.ID = F,logfile=logfile)
-
+if(!is.null(phist_BMI)){
+  cov_BMI = setdiff(c('age_adiposity','age_diff','sex',cov_genoPC,cov_cohort_specific,cov_additional),rm.var)
+  adj_BMI = get_adj_BMI(d=df,covariate_names = cov_BMI,remove.ID = F,logfile=logfile)
+}else{
+  cov_BMI=c()
+}
+if(!is.null(phist_waist)){
+  cov_WC = setdiff(c('age_adiposity','age_diff','sex','height',cov_genoPC,cov_cohort_specific,cov_additional),rm.var)
+  adj_WC = get_adj_WC(d=df,covariate_names = cov_WC,remove.ID = F,logfile=logfile)
+}else{
+  cov_WC = c()
+}
+if(!is.null(phist_WHR)){
+  cov_WHR = setdiff(c('age_adiposity','age_diff','sex',cov_genoPC,cov_cohort_specific,cov_additional),rm.var)
+  adj_WHR = get_adj_WHR(d=df,covariate_names = cov_WHR,remove.ID = F,logfile=logfile)
+}else{
+  cov_WHR = c()
+}
 # association tests ----
 res_colnames = c("term", "Estimate", "Std..Error", "df", "Pr...t..", "N", 
   "sex", "ctx.pheno", "adiposity", "mod")
-for(adiposity in c("BMI","WC","WHR")){
+for(adiposity in setdiff(c("BMI","waist","WHR"),rm.var)){
   
   if(adiposity == "BMI"){
     adj_adiposity = adj_BMI;cov_adiposity = cov_BMI
-  }else if (adiposity == "WC") {
+  }else if (adiposity == "waist") {
     adj_adiposity = adj_WC;cov_adiposity = cov_WC
   }else{
     adj_adiposity = adj_WHR;cov_adiposity = cov_WHR
