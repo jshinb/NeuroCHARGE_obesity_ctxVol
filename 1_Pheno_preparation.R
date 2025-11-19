@@ -16,7 +16,7 @@ source('install_libs.R')
 if(!file.exists(file.path(opt$dir, "Rfunctions.R"))){
   stop("Please make sure you save the file called 'Rfunctions.R' in the same directory as 'pheno_preparation.R' as well as your neuroimaging and covariate input files. Currently it is not in ", opt$dir,".")
 }
-source(paste0(opt$dir, "/Rfunctions.R"))
+source(file.path(opt$dir, "Rfunctions.R"))
 
 #*****************************************************************************#
 # Record output ----
@@ -46,7 +46,7 @@ message(
 
 #* Read in files ----
 neuro_all = fread(file.path(opt$dir,opt$input_neuro))
-non.neuro_all = fread(file.path(opt$dir, opt$input_non.neuro))
+non.neuro_all = fread(file.path(opt$dir,opt$input_non.neuro))
 
 #* Examine if column names are correct ----
 neuro_all_colnames = fread('neuro_columns.txt',header=F) %>% pull(V1)

@@ -34,7 +34,6 @@ file_to_write=file.path(outdir,paste("table_data_missing.txt",sep=""))
 write_tsv(to_write,file_to_write);rm(to_write,file_to_write)
 
 
-
 #*****************************************************************************#
 # Standardise and remove outliers for cortical volume outside SD of 4 ----
 #*****************************************************************************#
@@ -60,11 +59,24 @@ df = df_tmp;rm(df_tmp)
 #*****************************************************************************#
 #* plot histogram
 n = nrow(df)
-p1 <- plot_hist(dat = df, var = "BMI", col = "#D81B60")
-p2 <- plot_hist(dat = df, var = "waist", col = "#FFC107")
-p3 <- plot_hist(dat = df, var = "WHR", col = "#004D40")
+if(!any("BMI"==missingCol)){
+  phist_BMI <- plot_hist(dat = df, var = "BMI", col = "#D81B60")
+  
+}else{
+  phist_BMI <- NULL
+}
+if(!any("waist"==missingCol)){
+  phist_waist <- plot_hist(dat = df, var = "waist", col = "#FFC107")
+}else{
+  phist_waist <- NULL
+}
+if(!any("WHR"==missingCol)){
+  phist_WHR <- plot_hist(dat = df, var = "WHR", col = "#004D40")
+}else{
+  phist_WHR <- NULL
+}
 #* arrange plots
-p <- ggarrange(p1,p2,p3, nrow=1)
+p <- ggarrange(phist_BMI,phist_waist,phist_WHR, nrow=1)
 #* annotate
 p <- annotate_figure(p, 
                      top = text_grob(paste0(opt$cohort_name, " (", group, ")\nN = ",n),
