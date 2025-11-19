@@ -76,7 +76,7 @@ res_colnames = c("term", "Estimate", "Std..Error", "df", "Pr...t..", "N",
 for(adiposity in setdiff(c("BMI","waist","WHR"),rm.var)){
   if(adiposity == "BMI"){
     adj_adiposity = adj_BMI;cov_adiposity = cov_BMI
-  }else if (adiposity == "WC") {
+  }else if (adiposity == "waist") {
     adj_adiposity = adj_WC;cov_adiposity = cov_WC
   }else{
     adj_adiposity = adj_WHR;cov_adiposity = cov_WHR
