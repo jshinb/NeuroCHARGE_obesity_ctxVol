@@ -38,10 +38,10 @@ This file must include all of the following non-brain types of variables (i.e., 
 | `ID`     | Participant ID                    |                                                    |
 | `FID`    | Family ID (same as `ID` if unrelated)|                                                 |
 | `sex`    | Sex (`M/F`)                       |                                                    |
-| `BMI`    | Body mass index (kg/m²)           |                                                    |
-| `waist`  | Waist circumference (cm)          |                                                    |
+| `BMI`    | Body mass index (kg/m²)           | If missing, fill with NA's for all participants    |
+| `waist`  | Waist circumference (cm)          | If missing, fill with NA's for all participants    |
 | `height` | Height (cm)                       |                                                    |
-| `WHR`    | Waist Hip Ratio: Waist circumference (cm) / Hip circumference (cm)|                    |
+| `WHR`    | Waist Hip Ratio: Waist circumference (cm) / Hip circumference (cm)|If missing, fill with NA's for all participants|
 | `age_adiposity`| Age at adiposity measurement (years)|                                            |
 | `age_mri`| Age at MRI scan (years) |If it was taken at the time of adiposity measurement, put `age_adiposity`.|
 | `genoPC1` – `genoPC4` or more | The first >=4 leading principal component scores.|At least 4 top PCs will be included.|
