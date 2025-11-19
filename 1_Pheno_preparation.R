@@ -22,8 +22,6 @@ source(file.path(opt$dir, "Rfunctions.R"))
 # Record output ----
 #*****************************************************************************#
 # create directory to hold results
-dir.create(path = file.path(opt$dir, paste0("outputs_to_send_",opt$cohort_name)), recursive = T, showWarnings = F)
-
 print("Starting analysis.")
 print(Sys.time())
 time1=Sys.time()
