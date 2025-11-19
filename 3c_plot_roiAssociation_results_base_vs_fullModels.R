@@ -15,7 +15,7 @@ cat(starting.message,file=logfile,append=F)
 
 
 # starting --------------------------------------------------------------------
-for(adiposity in c("BMI","WC","WHR")){
+for(adiposity in setdiff(c("BMI","WC","WHR"),rm.var)){
   for(pheno in c('volume','thickness','area')){
     baseres = paste0("roi_assoc_res_two_methods_baseModel_",adiposity,"_ctx_",pheno,".Rdata")
     fullres = paste0("roi_assoc_res_two_methods_fullModel_",adiposity,"_ctx_",pheno,".Rdata")
