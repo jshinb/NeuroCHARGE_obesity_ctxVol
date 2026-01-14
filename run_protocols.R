@@ -1,7 +1,7 @@
 #*****************************************************************************#
 # Load inputs and set working directories: CHANGE HERE ----
 #* [Put the full path of the input file]
-cohort_input_file =
+cohort_input_file = #e.g., "~/Documents/scripts/NeuroCHARGE_obesity_ctxVol/cohort_specific_inputs.R"
 #
 #*****************************************************************************#
 
