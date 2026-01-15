@@ -121,4 +121,5 @@ non.neuro = non.neuro_all %>%
 #* Merge neuro and non-neuro datasets ----
 df_all = non.neuro %>% inner_join(neuro, join_by(ID)) 
 
-cat("\n **** Please proceed to the next steps. **** \n",sep='')
+message("Join complete. Final sample size: N = ", nrow(df_all))
+cat("\n **** Please proceed to the next steps. **** \n")
