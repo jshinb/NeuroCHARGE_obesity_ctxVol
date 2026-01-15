@@ -68,7 +68,7 @@ ind_genoPC=str_detect(names(non.neuro_all),"genoPC")
 if(!any(ind_genoPC)){
   stop(
     paste0(
-      "Your --input_non.neuro_all file appears to miss. Please provied >=4 leading genetic PCs.",
+      "Your --input_non.neuro_all file appears to miss genotype PCs. Please provied >=4 leading genetic PCs.",
       "Check documentation for correct and case-sensitive naming and re-run this function. It should be genoPC1, genoPC2, genoPC3, genoPC4,...."))
 }
 
