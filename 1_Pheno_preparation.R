@@ -57,11 +57,11 @@ cohort_specific_covs = setdiff(
   )
 
 if(!all(neuro_all_colnames %in% names(neuro_all))){
-  stop(paste0("Your --input_neuro_all file appears to have incorrect column names, or to miss certain columns.", "Check documentation for correct and case-sensitive naming and re-run this function."))
+  stop(paste0("Your --input_neuro file appears to have incorrect column names, or to miss certain columns.", "Check documentation for correct and case-sensitive naming and re-run this function."))
 }
 
 if(!all(non.neuro_required_colnames %in% names(non.neuro_all))){
-  stop(paste0("Your --input_non.neuro_all file appears to have incorrect column names, or to miss certain columns. Your column names are: ", paste0(names(non.neuro_all), collapse = ", "),". Check documentation for correct and case-sensitive naming and re-run this function. It should be (something like) ID, age_mri,age_adiposity, sex, ethnicity, genoPC1, genoPC2, genoPC3, genoPC4, [other study-specific covariates]."))
+  stop(paste0("Your --input_non.neuro file appears to have incorrect column names, or to miss certain columns. Your column names are: ", paste0(names(non.neuro_all), collapse = ", "),". Check documentation for correct and case-sensitive naming and re-run this function. It should be (something like) ID, age_mri,age_adiposity, sex, ethnicity, genoPC1, genoPC2, genoPC3, genoPC4, [other study-specific covariates]."))
 }
 
 ind_genoPC=str_detect(names(non.neuro_all),"genoPC")
