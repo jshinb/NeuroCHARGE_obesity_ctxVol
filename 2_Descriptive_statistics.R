@@ -98,6 +98,7 @@ ggsave(p_hist_file,
 #* suppress warnings because a heatmap always has missing values 
 suppressWarnings({
   vnames = unlist(str_split('BMI,waist,WHR,height,total_volume,total_area,mean_thickness,ICV,age_adiposity,age_mri',','))
+  vnames = setdiff(vnames, missingCol)
   heat = plot_heatmap(dat = df %>% select(all_of(vnames)),
                       axisNames = vnames)
   
