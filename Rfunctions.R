@@ -642,3 +642,54 @@ pooled_analysis = function(
     capture.output(msg,file=logfile,append=T)
   }
 }
+
+generate_histograms <- function(outdir,metabo_OUT,metabo_missing_zero_info,metabo_columns){
+  #create a sub-directory to store the pdf files
+  dir.create(file.path(outdir,"plots"))
+  names(metabo_missing_zero_info)[1] <- "Abbreviation2"
+  
+  d <- metabo_OUT
+  summarydata = psych::describe(d)
+  summarydata <- data.frame(Abbreviation2=rownames(summarydata),summarydata)
+  summarydata <- metabo_missing_zero_info %>% left_join(summarydata,join_by(Abbreviation2)) 
+  summarydata$Abbreviation2 <- factor(summarydata$Abbreviation2,levels=metabo_columns)
+  summarydata = summarydata %>% arrange(Abbreviation2)
+  
+  myvars <- paste(summarydata$Abbreviation2[which(summarydata$n>=2)])
+  i=1;for(l in seq(1,length(myvars), by=60)){
+    l0 = l
+    l1 = min((l+59),length(myvars))
+    temp_vars <- myvars[l0:l1]
+    temp <- subset(d,select=temp_vars)
+    tmp.colnames = colnames(temp)
+    temp = data.frame(temp)
+    names(temp) = tmp.colnames
+    temp_long <- melt(temp)
+    temp_info <- summarydata %>% filter(Abbreviation2 %in% temp_vars)
+    names(temp_info)[1] <- "variable"
+    # generate plots
+    myplot <- ggplot()+
+      geom_histogram(data=temp_long, aes(x=value), fill="lightsteelblue2", bins=30)+
+      geom_text(data=temp_info,
+                aes(x=Inf, y=Inf, label=ifelse(mean<100, paste("mean", formatC(mean, format="f", digits=3)), paste("mean", round(mean, digits=0)))),
+                hjust=1, vjust=2, size=2.3)+
+      geom_text(data=temp_info,
+                aes(x=Inf, y=Inf, label=ifelse(median<100, paste("median", formatC(median, format="f", digits=3)), paste("median", round(median, digits=0)))),
+                hjust=1, vjust=3.5, size=2.3)+
+      geom_text(data=temp_info,
+                aes(x=Inf, y=Inf, label=paste("N", n)),
+                hjust=1, vjust=5, size=2.3)+
+      scale_y_continuous(expand=c(0,0))+
+      facet_wrap(~variable, scales="free", ncol=10)+
+      theme(strip.background=element_blank(),
+            strip.text=element_text(size=8, face="bold"),
+            axis.text.y=element_text(size=7),
+            axis.text.x=element_text(size=7, angle=30, hjust=1, vjust=1),
+            axis.title=element_text(size=8),
+            plot.title=element_text(size=9, face="bold"))
+    nvars <- length(temp_vars[which(!is.na(temp_vars))])
+    h <- ifelse(nvars<11, 2.1, ifelse(nvars>=11 & nvars<21, 3.2, ifelse(nvars>=21 & nvars<31, 4.3, ifelse(nvars>=31 & nvars<41, 5.4, ifelse(nvars>=41 & nvars<51, 6.5, ifelse(nvars>=51, 7.6, NA))))))
+    ggsave(file.path(outdir,"plots",paste0("histo",i,".pdf")), myplot, width=15, height=h)
+    print(paste("variables",l, "-",(l+59),"done")) ; i=i+1  
+  }
+}#generate_histograms
