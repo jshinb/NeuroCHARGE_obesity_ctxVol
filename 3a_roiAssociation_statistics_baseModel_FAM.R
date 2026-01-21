@@ -106,7 +106,7 @@ for(adiposity in intersect(c("BMI","waist","WHR"),names(df))){
       analdati[['y']] <- inormal(analdati[[paste0(roii,".adj")]])
       analdati[['x']] <- inormal(analdati[[paste0(adiposity,".adj")]])
       
-      # sex-specific adiposity  effect on cortical structure
+      # sex-specific adiposity effect on cortical structure
       ## female
       if(max(table(analdati %>% filter(sex=="F") %>% pull(FID)))>1){
         mod.F = "y~x+(1|FID)"
