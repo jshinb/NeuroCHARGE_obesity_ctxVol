@@ -55,25 +55,25 @@ if(!is.null(phist_BMI)){
   cov_BMI = setdiff(c('age_adiposity','age_diff','sex',cov_genoPC,cov_cohort_specific),rm.var)
   adj_BMI = get_adj_BMI(d=df,covariate_names = cov_BMI,remove.ID = F,logfile=logfile)
 }else{
-  cov_BMI=c()
+  cov_BMI <- adj_BMI <- c()
 }
 if(!is.null(phist_waist)){
   cov_WC = setdiff(c('age_adiposity','age_diff','sex','height',cov_genoPC,cov_cohort_specific),rm.var)
   adj_WC = get_adj_WC(d=df,covariate_names = cov_WC,remove.ID = F,logfile=logfile)
 }else{
-  cov_WC = c()
+  cov_WC <- adj_WC <- c()
 }
 if(!is.null(phist_WHR)){
   cov_WHR = setdiff(c('age_adiposity','age_diff','sex',cov_genoPC,cov_cohort_specific),rm.var)
   adj_WHR = get_adj_WHR(d=df,covariate_names = cov_WHR,remove.ID = F,logfile=logfile)
 }else{
-  cov_WHR = c()
+  cov_WHR <- adj_WHR <- c()
 }
 
 # association tests ----
 res_colnames = c("term", "Estimate", "Std..Error", "df", "Pr...t..", "N", 
                  "sex", "ctx.pheno", "adiposity", "mod")
-for(adiposity in setdiff(c("BMI","waist","WHR"),rm.var)){
+for(adiposity in intersect(c("BMI","waist","WHR"),names(df))){
   if(adiposity == "BMI"){
     adj_adiposity = adj_BMI;cov_adiposity = cov_BMI
   }else if (adiposity == "waist") {
@@ -91,6 +91,7 @@ for(adiposity in setdiff(c("BMI","waist","WHR"),rm.var)){
       adj_ctx = adj_ctxSA;cov_ctx = cov_ctxSA
     }
     names(adj_ctx) = str_remove(names(adj_ctx),paste0("_",pheno))
+    names(adj_adiposity) = str_replace( names(adj_adiposity),"WC","waist")
     
     ##* approach 1 ----
     assoc_res_adj = c()

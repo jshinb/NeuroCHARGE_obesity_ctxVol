@@ -26,6 +26,8 @@ if(any(data_missing == nrow(df))){
   print(names(df)[data_missing == nrow(df)])
   missingCol <- names(df)[data_missing == nrow(df)]
   df[, missingCol] <- NULL
+}else{
+  missingCol = NULL
 }
 
 #* record the numbers of missing values for each column
