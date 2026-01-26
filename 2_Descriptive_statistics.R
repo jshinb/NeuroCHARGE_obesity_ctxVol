@@ -221,7 +221,7 @@ if(length(table(df$is.underweight, useNA = "ifany"))>1){
 
 if(length(table(df$age.group, useNA = "ifany"))>1){
   tableOne_age_str <- CreateTableOne(vars = tab_vars,
-                                     strata = "age_group", 
+                                     strata = "age.group", 
                                      data = df, 
                                      factorVars = cat_vars)
   save(tableOne_age_str,
