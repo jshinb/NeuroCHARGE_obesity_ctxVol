@@ -1,5 +1,5 @@
 # NeuroCHARGE_obesity_ctxVol
-Scripts to run adiposity-ctx structure associations ([PROTOCOL](NeuroCHARGE_Protocol_2025oct.pdf))
+Scripts to run adiposity-ctx structure associations (Please see [PROTOCOL](NeuroCHARGE_Protocol_2025oct.pdf) for details)
 
 Please contact  **Jean Shin** (**[jjshin.research@gmail.com](mailto:jjshin.research@gmail.com)**) for any questions and/or issues.
 
