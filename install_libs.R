@@ -14,10 +14,13 @@ pacman::p_load(#check if a package is installed, if not, it attempts to install 
   tidyverse, #readr, dplyr, ggplot2, purrr, tidyr
   optparse, psych, data.table, tableone, reshape2,
   ggpubr,cowplot,patchwork, GGally,corrplot,
-  hrbrthemes, #might not be installed automatically: is this necessary?
   mgcv,       #for adjusting continuous covariates using non-parametric smooth models
   lmerTest,   #for fitting regression to family-data
   EnvStats)   #for outliers [grubs]
+
+if(!is.element("hrbrthemes",installed.packages()[,1])){
+  remotes::install_github("hrbrmstr/hrbrthemes")
+};library(hrbrthemes)
 
 ## print out 
 session_info(to_file = "session_info.txt")
